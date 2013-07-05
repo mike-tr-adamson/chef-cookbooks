@@ -1,0 +1,3 @@
+#!/bin/bash
+knife role edit $1
+knife role show $1 -Fj > /data/chef-repo/roles/$1.json
