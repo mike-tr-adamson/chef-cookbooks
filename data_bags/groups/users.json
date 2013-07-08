@@ -1,0 +1,15 @@
+{
+  "id": "users",
+  "name": {
+    "encrypted_data": "FyrLf1+l41KlTgtQ4TDo3CpnC+LK2NRu04dpysMGaaA=\n",
+    "iv": "RfWE574AS1w2YhL7Qxy2fg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "gid": {
+    "encrypted_data": "AP3ZphmEuQ+vzQRzRafCFLQOgY0OTDDbF1rcks7qRwk=\n",
+    "iv": "ZekwVLIUaK3owRVhFDmAFw==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}
