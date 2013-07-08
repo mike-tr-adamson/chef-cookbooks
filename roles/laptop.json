@@ -3,11 +3,18 @@
   "description": "The base role for laptop rebuild",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "openssh": {
+      "client": {
+        "strict_host_key_checking": "no"
+      }
+    }
   },
   "override_attributes": {
   },
   "chef_type": "role",
   "run_list": [
+    "recipe[openssh]",
+    "recipe[openssh::iptables]",
     "recipe[users]"
   ],
   "env_run_lists": {
