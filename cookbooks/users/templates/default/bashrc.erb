@@ -1,0 +1,6 @@
+# .bashrc
+
+# Chef extras
+<% Array(@bash_aliases).each do |value| %>
+alias <%= value %>
+<% end %>

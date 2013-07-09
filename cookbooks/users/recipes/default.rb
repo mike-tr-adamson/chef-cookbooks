@@ -10,6 +10,14 @@ group "users" do
 	gid 1001
 end
 
+template "/etc/sudoers.d/users" do
+	source "sudoers.erb"
+end
+
+template "/etc/pam.d/sshd" do
+	source "pamd_ssh.erb"
+end
+
 secret = Chef::EncryptedDataBagItem.load_secret("#{node[:chef_secret_path]}")
 
 encrypted_users = data_bag('users')
@@ -29,6 +37,7 @@ users.each do |user|
 		uid			user['uid']
 		gid			1001
 		password	user['password']
+		comment		user['comment']
 		shell		'/bin/bash'
 		home		home_dir
 		supports	:manage_home => true
@@ -63,9 +72,17 @@ users.each do |user|
 		mode "0400"
 		variables :private_key => user['ssh_private_key']
 	end
-	if File.exist?("#{ssh_dir}/known_hosts")
-		file "#{ssh_dir}/known_hosts" do
-			action :delete
-		end
+	template "#{home_dir}/.bashrc" do
+		source "bashrc.erb"
+		owner user['uid']
+		group 1001
+		mode "0400"
+		variables :bash_aliases => user['bash_aliases']
+	end
+	template "#{home_dir}/.bash_profile" do
+		source "bash_profile.erb"
+		owner user['uid']
+		group 1001
+		mode "0400"
 	end
 end

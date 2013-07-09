@@ -6,6 +6,10 @@
     "openssh": {
       "client": {
         "strict_host_key_checking": "no"
+      },
+      "server": {
+        "print_motd": "no",
+        "print_lastlog": "no"
       }
     }
   },
@@ -15,7 +19,8 @@
   "run_list": [
     "recipe[openssh]",
     "recipe[openssh::iptables]",
-    "recipe[users]"
+    "recipe[users]",
+    "recipe[tools]"
   ],
   "env_run_lists": {
   }

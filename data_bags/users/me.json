@@ -1,38 +1,62 @@
 {
   "id": "me",
   "name": {
-    "encrypted_data": "1tsDp7ubjc2b1BywOLX+WUNktswUj/axiKO559z6TVg=\n",
-    "iv": "wanFaELZv4uQmqm5VOmMOg==\n",
+    "encrypted_data": "o/ULMuKfErKWZsEzy6mhlPX0FK9HERkSI93PeBaiOvA=\n",
+    "iv": "eMv6yNXcGUa3UTQ3A0L8lA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "comment": {
+    "encrypted_data": "3yFWufkVosc28vt3BllwFXPv+MHxx7ig95XxAwulLywUz0QwOhV79sK4vSP7\nBxRP\n",
+    "iv": "fy23fgTFHzH2eSsdXiMyfw==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   },
   "uid": {
-    "encrypted_data": "Lth33OqmTH1E+wRw3cd6HQCuUPTIVyyy8oqnZafSTVs=\n",
-    "iv": "zxj33hO/D0QlagZx1l4Vyg==\n",
+    "encrypted_data": "NbfyNtUFJT0A/B3/eWFVHcqomVcSojDV7OmiPjhuB5A=\n",
+    "iv": "QyPkJiEnlcIICwNQ8SGfyg==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   },
   "groups": {
-    "encrypted_data": "mjZfbMNJqOA/fNC8auudohlPQ8+Ch28K2pYAZUxWkt4=\n",
-    "iv": "F1rK6SYUjs+ze/NBlct9eQ==\n",
+    "encrypted_data": "eLW7Vs5NyKTrkjc66fJ4c3lK07pojA34oNuyrfLU6yE=\n",
+    "iv": "6XUCnfJOIXF2NAwyBjIfvQ==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   },
   "password": {
-    "encrypted_data": "h3kYRkZ/Rk4q3dPfmJp0RY8wH6R400jbW++g8IGM0S/vh5dohZLuX5G7NzZj\nC8TFJ5E63M42oynW/om92CSv3g==\n",
-    "iv": "Y0FFZ5vPGXrGVNh/l5n52g==\n",
+    "encrypted_data": "IdNrojQYQwjPUPle4/inf22gzLIibaN219BXbzVZEqLzlKv5kjKRrgRtWXFz\n93hu2zlK4SOEzfVoEYVp/3jHqA==\n",
+    "iv": "c8IRJV+znGHo9ZH/OdSQzw==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   },
   "ssh_private_key": {
-    "encrypted_data": "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\nvzUCTrI/tU3TMMOkrCuTxWZX\n",
-    "iv": "M1glAMgYvmLY3L8/tXzZHQ==\n",
+    "encrypted_data": "t+mcTOA8cMV1deT3XqF87Fdxp89xVzaHIqpEMqueNsG9SQdQvXsWUl20Uf+D\nzyJ8JB/m4aZxnilLxgL9aemvntzuv1aHlcpxoInYCzFeEx/LOEXff8tHqZVR\nxJmSclnLjGJUpBRbCtt317FzdFUH8+7jsESxRh5iCT4w4kW0gt6n0dXfyCkJ\nXjGt6IGfiWfTo8191nYpEFE2Hp1KPR83JZYkECM0B1jQNmS8/3G3Mk5G3s73\n5MprtU2RVX2Z/tOSclgl2ALCb7n5BtySLVsB5LfkHzoZEsGU8ZXMIwBtmWpr\nCD6RR4dfCofN36scjMhKNKzLrsY5hdAgCROz9DFsdZevY79roonlz2TfPI8j\n6RcmD/FRgdURgblrSa17FT9/30CKvzFEHL0gGIBnzHWoR8pCbO21nzanThPw\nGUc0s3a8JJJHcZsWmNPw99rpKI57AhoLeXt0dCBJ889ZRiWEeXF5koSOVlL9\nZBq07ZCKu87/o61WQ9WdkL5wfLO0EWSeDzsaBJLJrTZao+K3ab1mq8c5F+Di\nYxQRv5e5rDKsvZ1mYPphyuQErZPBnNEUdh3+BUSWrTtpwZH+tj+AhrPlOf//\nDGcUNJUOdXLssTPSxXU/m1Exd2d3t2MTrTGKfGB7plkhXEc97t93w+wWCNul\n7A7xoskXk1crkzbgvRY7EqH/2Ia++TSZEXsozbi0xqs9caRY4tdJvnJgo9G2\nPj5RxDKT+2tjDawvv3qRSLiZ+LSUF6xE6ibZ8J6bZhzBWoKdsBKSQO6ZiQwK\nC3uz+2DDR9RKFkBNCTF3ILuPFci/rYY2QecOCp9qF/AQMljLW4dAronyMvet\nJRIDumiqn2bbefwnb5QGY6Ld/gJcKI/4ZSz3Imx63nUSxGT5JXg/dp/N4KQq\nAic/MVPLOXVrN0jTRVl0wqoJMW05PXkblVsD/IO2Erdt61U2eDRvqLikOOzw\n5e9hf2YeWbN28h3xbCN1WnQ97gcyx7AmLs4BnpQA3eRtNmHMlXu81eFGbeoz\ntTdYRRseI5nfGafFKP1xX+xCjQZki1Qe2v3AXp9ffyieoobT9W4OL14jLsJ5\nhMgUPXgxysYZ2afZjoTvRCk9UfxFA3czdipnNNoTu49YpBZgmfcfFaNeNpy9\n1S5nMDXJeKLY340z11CgcG1o1eKT2Gipekt3kMAaRGoFREtczlZsxaf8SohO\ne5vf+Rr5MtA1DDzIQt6O2qH4BXh18Q0C7WWouzoEaGplGnoCbKV/fKEj66la\nKnXetfV2XUUERotKovu8r3J7aHiesdqR9Yk3gSSMgNTWy0A67cD4dRbJkY45\nYZAm6Lmh7gR96CSx8xZHqZ367jBhVHHZoJAxlex1KXbvyqEi9DGlKaIw99M3\nZey1PA6/0r7smUh8X4SXYOUe0qxo5VqnysFC4UMOuLW+Cb4B2g+49cSwaSi4\n5YOqF3hBiT5wUNP5ch9cIf/un46RAuiF/Kv6MSlRS0Tef0uO5ooiWIr9Suvm\nxOr+N9GIHnCbw4DFQZuI6ZLzGVP+Cdm3wW0eNtyLfc2pEEVnKg1m/MAcQPPk\nvusoAgTlEXAUSp2RUzLMl4pW/Au0KN9LOyHT8N8kgh0a+P+13Vvobw46kIQO\nEGO5hL9KHvCjEpekl7jz1+beuvYkXS7BQm53jVX81EXHXLU70c2RMoRH2dOH\nCDCPCPzHXpVoMnMs0LBqn/jxQzaf7p3z0JHhqUMuzr2DU+NBD6zFQlCM9Wso\nvo/zCVkHPRAyrpBSF9oeUTTLQrPLAbq2iHq/vmuQGg5eRFS187C2mMllhNgr\nGarmddPJIU9bswiTSXqh9Prhb/6WfFUqeiIojxLUgGYV1vjlL8+7Pjfoca+B\n9Os4+Rd5ROXR+z3b5YwvmQgQqsrDPB5AmGOE/Yfv2VUu84NzmwhfQqGmeabf\nDpEAe94pDQFcsAYvy5/weFbxrAdOFFNIYnGCxAf4Ao3JGaLdeHKYr/si5zZA\nuxEEhvTO9PyTef4dQwPrWJ5pxp+HRcznkfghME82XxoUl9tl8UeEWa7VKXDU\nP1DbLUjy1UqOr/QSJenjfB0A9WYwOhfO0SleasDUJDXsgFwUQvVWb2KJMh88\nLNgMR6tL+uaVz4GfO/Fe6t272T5q9pRZPVwiKUdcF4T91x3MrOAyrkCezMB1\nJ//FRonDDoDsxfnU5EU+cobaVCtNyh4/eYTWtxhmyLW3QsyKupfBJ1k+lDZn\nFPDTcNJOmue/l6TCowSnNILXhIg/YRjWSeRTf9s2BEHUwDVc0ZLP/KtrhAnZ\nAdjlHa4t30Htjzggw2MeQa81\n",
+    "iv": "7BC5E+UFKAx0pUUxGR1ZyA==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   },
   "ssh_public_key": {
-    "encrypted_data": "jRErD2lXgES4/0TbQYmv3QCGRO698OMjQGbFXMEJdgGjAK9ZEXBer37OWdPZ\nP61l5LeV7WiGO3+RiinmkgjK6zleVhu1s5bMm5vCN9kUKYPdDVO9LS4zaYk1\n1wjl+OV0pa4JQYKN9UlPbM2EyaztNfbY5STowqWvfuDB/vcXPIdVE3Sfbgld\nVs3DjEkYKcxLSdGjZdax+A7uvBnB2lK4JBQTgZg4+kiEIAE7Dikiat6vYOuv\nofo4HMD4geigrHXfLgC69C3ClYabkPmwKNs76apjDUGiUhG3VIjbmBgz6qr/\nejoKyYFUXOeJzLSOucaq+S8dHauXVlBDf0cqdD1fxUFiYBY42b+rLj4FGzQT\nNCrIkCV3hNaZLME9QGX/g9MFgvIjDYvzEo4wlzcoE0ZtPfxkhN6ll83k4Cbc\na5oKg+QiJ1ts6WdsFHq89mEk7S9BcxFYAnh6wRHoX1+I53XT6uRVCmC5a4Kp\nqh4N50JH4LGqwmlrwLE7I3gCoOOc/JBX/YnyE20BX+xRKSZVFJpjbU62jdbZ\n7qIAFLvGM0iIz6oHDH6+LlU5itBv/yuXvyl2\n",
-    "iv": "hlbyPVkGiC/Z/7e3LgzzKA==\n",
+    "encrypted_data": "E9QRFH59MlgmJifHFWwfn0q1s5u0EaUdAqj7T1x2wgdNZU1gd7wsQZM/23ku\njmgMaEN531wX2K2ktQAHILxelvc15BEXH4nDUZVItjBw5eHHvf32XFFpPp7E\n3we/9KtU3FtILf60y63Yp2FB+yPCYY+qK5IDhKhI4EjZ27cCMGCBKMvDtWzA\n/s/081DJoFCQePy3mzK7mL9KStNfAaLh2aWIa44YpROsyAlpFS/5x8Dq/GN/\n6KdUuNSicAkefee/7Oq/jJNbnzLZPkIeCVInKi/QGpifigIkLQC+8yhChAo/\nlc96rgJZR77vugLHA0EnsZkiJHzBORyfL7jk6bpInyclPG3K+UNS0z5Q3EU0\noBluZQ9SIUBMaqGM4ctETQPZMjif/DFIAl/EJfbXYmXBPNp5uaVbOPzev3Kr\n4x4HDw86RqZE+XodcZrOzQkszrjmWM/RJJnfywnbEoYmpSs0WazkzLe0/ONh\n8lVDj8CxadRuLpVOLdTOMpcNxzDKVK/U61moXiVK+asAh0XWd66bixybt+Pg\n9xLY2hLR8+BKXA05GztnMpFLnug6I1CDcT95\n",
+    "iv": "VRQjB6zBso1F13r0DCZcvA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "bash_aliases": {
+    "encrypted_data": "hQebKJ0NcD83agdDioBY62Ia0GgoVP630Q42BEY+WVM=\n",
+    "iv": "ldQSy+ZqhXXCifr0v0UhPg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "java_version": {
+    "encrypted_data": "U2SWrTIMyW6qYf7oX4sO7ZmgMgFg9ZBPjlinzTNh4qs=\n",
+    "iv": "NK8CYIiVoB+ONwGwzlUbaA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "intellij_license": {
+    "encrypted_data": "Ra/EztfcFy+MJX+QBhPm9BDn17dHAtLJXQXhrv1vUHMftnG2NawpJ/TYhmUo\nWfOEs7YcpNWAw/hFEGZmtBiPyI3pNDOROig7rITg1WBI7nOCjzTvFWyY8s40\nMVPq/fkg0Los1ZlJlIibUqhWPu3oCtH4ZQawZgJ2LPV1JGSUJawjH0l+8N4n\n7SbEqwjq91FYRCrYQhh7+TmqTTfDx39j9Q==\n",
+    "iv": "1mM/Es8N49ZooiZM5oy98w==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   }
