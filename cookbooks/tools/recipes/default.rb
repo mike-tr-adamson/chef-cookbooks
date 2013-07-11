@@ -15,19 +15,42 @@ encrypted_users.each do |encrypted_user|
 	users << Chef::EncryptedDataBagItem.load("users", encrypted_user, secret)
 end
 
+#bash 'Install xorg-edgy' do
+#  user 'root'
+#  group 'root'
+#  code <<-EOH
+#  add-apt-repository ppa:xorg-edgers/ppa
+#  apt-get update
+#  EOH
+#end
+
+
 node["tools"]["packages"].each do |package|
 	package package
 end
 
-dpkg_package "vagrant" do
-	source "/data/file_repo/vagrant_1.2.2_x86_64.deb"
-	action :install
+node["tools"]["deb_packages"].each do |package|
+	dpkg_package package do
+		source "/data/file_repo/#{package}.deb"
+		ignore_failure true
+		action :install
+	end
+end
+
+bash 'Apt upgrade' do
+  user 'root'
+  group 'root'
+  code <<-EOH
+    apt-get -fy install
+    apt-get -y update
+    apt-get -y upgrade
+  EOH
 end
 
 directory "/apps" do
   owner "root"
-  group "users"
-  mode 00774
+  group "root"
+  mode 00775
   action :create
 end
 
@@ -54,6 +77,8 @@ end
 
 # Install Java 1.6 & 1.7
 bash 'Install Java 1.6' do
+  user 'root'
+  group 'root'
   code <<-EOH
     mkdir -p /apps/jdk1.6.0.30
     tar xzf /data/file_repo/sun-jdk-linux-x86_64-1.6.0.30.tar.gz -C /apps/jdk1.6.0.30
@@ -63,6 +88,8 @@ bash 'Install Java 1.6' do
 end
 
 bash 'Install Java 1.7' do
+  user 'root'
+  group 'root'
   code <<-EOH
     mkdir -p /apps/jdk1.7.0.09
     tar xzf /data/file_repo/sun-jdk-linux-x86_64-1.7.0.09.tar.gz -C /apps/jdk1.7.0.09
@@ -86,14 +113,18 @@ end
 
 # Install build tools
 bash 'Install Gradle' do
+  user 'root'
+  group 'root'
   code <<-EOH
-    unzip /data/file_repo/gradle-1.6-all.zip -q -d /apps
+    unzip -q /data/file_repo/gradle-1.6-all.zip -d /apps
     ln -s /apps/gradle-1.6 /apps/gradle
     EOH
   not_if { ::File.exists?('/apps/gradle-1.6') }
 end
 
 bash 'Install Ant' do
+  user 'root'
+  group 'root'
   code <<-EOH
     tar xzf /data/file_repo/apache-ant-1.9.1-bin.tar.gz -C /apps
     ln -s /apps/apache-ant-1.9.1 /apps/apache-ant
@@ -102,6 +133,8 @@ bash 'Install Ant' do
 end
 
 bash 'Install Maven' do
+  user 'root'
+  group 'root'
   code <<-EOH
     tar xzf /data/file_repo/apache-maven-3.0.5-bin.tar.gz -C /apps
     ln -s /apps/apache-maven-3.0.5 /apps/apache-maven
@@ -122,35 +155,10 @@ users.each do |user|
 	end	
 end
 
-# Install eclipse
-bash 'Install Eclipse' do
-  code <<-EOH
-    tar xzf /data/file_repo/eclipse-jee-kepler-R-linux-gtk-x86_64.tar.gz -C /apps
-    mv /apps/eclipse /apps/eclipse-jee-kepler
-    ln -s /apps/eclipse-jee-kepler /apps/eclipse
-    EOH
-  not_if { ::File.exists?('/apps/eclipse-jee-kepler') }
-end
-
-template "/apps/eclipse-jee-kepler/eclipse.ini" do
-	source "eclipse.ini.erb"
-end
-
-users.each do |user|
-	ruby_block "Set eclipse path for user #{user['name']}" do
-	  block do
-		file = Chef::Util::FileEdit.new("/home/#{user['name']}/.bashrc")
-		file.insert_line_if_no_match(
-		  "# Set eclipse path for user",
-		  "\n# Set eclipse path for user\nexport ECLIPSE_HOME=/apps/eclipse\nexport PATH=$ECLIPSE_HOME:$PATH"
-		)
-		file.write_file
-	  end
-	end	
-end
-
 # Install IntelliJ
 bash 'Install IntelliJ' do
+  user 'root'
+  group 'root'
   code <<-EOH
     tar xzf /data/file_repo/ideaIU-12.1.4.tar.gz -C /apps
     ln -s /apps/idea-IU-129.713 /apps/intellij
@@ -185,3 +193,45 @@ users.each do |user|
 		EOH
 	end
 end
+
+gem_package "vmc" do
+  action :install
+end
+
+gem_package "nimbus" do
+  source "/data/file_repo/nimbus-0.0.6.dev.gem"
+  action :install
+  ignore_failure true
+end
+
+# Add any other user specific changes
+users.each do |user|
+	directory "/home/#{user['name']}/.subversion" do
+		owner "#{user['name']}"
+		group 'users'
+	end
+	template "/home/#{user['name']}/.subversion/config" do
+		source "subversion_config.erb"
+		owner user['uid']
+		group 1001
+		mode "0600"
+	end
+	directory "/home/#{user['name']}/.chef" do
+		owner "#{user['name']}"
+		group 'users'
+	end
+	bash "Copy knife files for #{user['name']}" do
+		user "#{user['name']}"
+		group 'users'
+		code <<-EOH
+			cp /data/file_repo/knife.rb /home/#{user['name']}/.chef
+			cp /data/file_repo/mike_tr_adamson.pem /home/#{user['name']}/.chef
+			cp /data/file_repo/mike_tr_adamson-validator.pem /home/#{user['name']}/.chef
+		EOH
+		not_if { ::File.exists?("/home/#{user['name']}/.chef/knife.rb") }
+	end
+	
+end
+
+
+

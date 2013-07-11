@@ -9,7 +9,8 @@
       },
       "server": {
         "print_motd": "no",
-        "print_lastlog": "no"
+        "print_lastlog": "no",
+        "x11_forwarding": "yes"
       }
     }
   },
@@ -20,7 +21,9 @@
     "recipe[openssh]",
     "recipe[openssh::iptables]",
     "recipe[users]",
-    "recipe[tools]"
+    "recipe[tools]",
+    "recipe[eclipse]",
+    "recipe[mysql]"
   ],
   "env_run_lists": {
   }
