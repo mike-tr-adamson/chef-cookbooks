@@ -37,6 +37,18 @@ node["tools"]["deb_packages"].each do |package|
 	end
 end
 
+node["tools"]["scripts"].each do |script|
+	bash "Copying script #{script}" do
+		user 'root'
+		group 'users'
+		umask '007'
+		code <<-EOH
+			cp /data/file_repo/#{script} /apps/bin
+		EOH
+		not_if { ::File.exists?("/apps/bin/#{script}") }
+	end
+end
+
 bash 'Apt upgrade' do
   user 'root'
   group 'root'
@@ -192,6 +204,28 @@ users.each do |user|
 		echo #{user['intellij_license']} | base64 -d - > /home/#{user['name']}/.IntelliJIdea12/config/idea12.key
 		EOH
 	end
+end
+
+bash 'Install SqlDeveloper' do
+  user 'root'
+  group 'root'
+  code <<-EOH
+    tar xzf /data/file_repo/sqldeveloper.tar.gz -C /apps
+    EOH
+  not_if { ::File.exists?('/apps/sqldeveloper') }
+end
+
+users.each do |user|
+	ruby_block "Set sqldeveloper path for user #{user['name']}" do
+	  block do
+		file = Chef::Util::FileEdit.new("/home/#{user['name']}/.bashrc")
+		file.insert_line_if_no_match(
+		  "# Set sqldeveloper path for user",
+		  "\n# Set sqldeveloper path for user\nexport SQLDEV_HOME=/apps/sqldeveloper\nexport PATH=$SQLDEV_HOME:$PATH"
+		)
+		file.write_file
+	  end
+	end	
 end
 
 gem_package "vmc" do
