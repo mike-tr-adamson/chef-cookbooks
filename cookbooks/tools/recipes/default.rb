@@ -43,7 +43,7 @@ node["tools"]["scripts"].each do |script|
 		group 'users'
 		umask '007'
 		code <<-EOH
-			cp /data/file_repo/#{script} /apps/bin
+			cp /data/file_repo/scripts/#{script} /apps/bin
 		EOH
 		not_if { ::File.exists?("/apps/bin/#{script}") }
 	end
@@ -161,6 +161,30 @@ users.each do |user|
 		file.insert_line_if_no_match(
 		  "# Set build tool paths for user",
 		  "\n# Set build tool paths for user\nexport M2_HOME=/apps/apache-maven\nexport GRADLE_HOME=/apps/gradle\nexport ANT_HOME=/apps/apache-ant\nexport PATH=$GRADLE_HOME/bin:$ANT_HOME/bin:$M2_HOME/bin:$PATH"
+		)
+		file.write_file
+	  end
+	end	
+end
+
+# Install LDAP SDK
+bash 'Install UnboundId LDAP SDK' do
+  user 'root'
+  group 'root'
+  code <<-EOH
+    unzip -q /data/file_repo/unboundid-ldapsdk-2.3.3-se.zip -d /apps
+    ln -s /apps/unboundid-ldapsdk-2.3.3-se /apps/unboundid-ldapsdk
+    EOH
+  not_if { ::File.exists?('/apps/unboundid-ldapsdk-2.3.3-se') }
+end
+
+users.each do |user|
+	ruby_block "Set LDAP SDK path for user #{user['name']}" do
+	  block do
+		file = Chef::Util::FileEdit.new("/home/#{user['name']}/.bashrc")
+		file.insert_line_if_no_match(
+		  "# Set LDAP SDK path for user",
+		  "\n# Set LDAP SDK path for user\nexport LDAP_SDK_HOME=/apps/unboundid-ldapsdk-2.3.3-se\nexport PATH=$LDAP_SDK_HOME/tools:$PATH"
 		)
 		file.write_file
 	  end

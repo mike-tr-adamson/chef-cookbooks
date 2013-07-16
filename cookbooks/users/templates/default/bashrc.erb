@@ -1,6 +1,9 @@
 # .bashrc
 
 export HOSTNAME=`hostname`
+export EDITOR=vi
+export MCS_ENV=$HOSTNAME
+export RAAS_DB_HOST=$HOSTNAME
 
 # Chef extras
 <% Array(@bash_aliases).each do |value| %>
