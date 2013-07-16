@@ -6,6 +6,15 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+secret = Chef::EncryptedDataBagItem.load_secret("#{node[:chef_secret_path]}")
+encrypted_users = data_bag('users')
+ssh_keys = []
+
+encrypted_users.each do |encrypted_user|
+	user = Chef::EncryptedDataBagItem.load("users", encrypted_user, secret)
+	ssh_keys << user['ssh_public_key']
+end
+
 node["oracle"]["db_packages"].each do |db_package|
   package db_package
 end
@@ -55,14 +64,12 @@ directory "/home/oracle/.ssh" do
   mode "700"
 end
 
-file "/home/oracle/.ssh/authorized_keys" do
-  owner "oracle"
-  group "root"
-  mode "600"
-  content <<-EOH
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDj4ARTohnnird3voY+PtwDmhTHEEPP2TXAFg0J1H/kNqIqnLXwEK5klDuebvBeUy684FfGFU7Wkfw4psdE/yXCQl5+vIdfhtow/WlZo5VqTkhBX+0VonSQiihXKfZ6wXL9nqnRyEXy75PfpRHxBdSZ4iXPSBMtAlT5ccCu2sR20AwmuMUKfP/s4ljIrZZmYTh8HRT9ZaeoGgEmyYDwnWUOPdW5H4RAu8R8MpXO2+9uC7CPdvB+TNL4EOnavAKn3SIUlf4J3NWXaOrpPWHqV/ZTW7zXIYGBuyyQ2h+2a3GSN2EF2b/LI7g5l8rQx/j3B4IRkr0xnz0TI4Mh2qk60v0v bskyb@localhost.localdomain
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwUcXuvzWs6cJgH3loHHuNAgsn0zyCkZ5/pIVc1iiQLpVzrACXzvUjaB25ahOv3K96ROYj8pr+qJ0MSEK83zKyGeMshkbIUomeOPiAiWwOjRoAaDlrp3nBb8tn2l9vxBPULML1iMT4jrn8bN37ru2eTk4b+qUVAgqEslUwKS2UJxjbOtUDMthOYKmVekk8ij3QHk3s/Wz/xNsuB3UHn3zo/Lpf9okZWN9nXvVQFzn0JnEYBZsJuN7lYKLZUm+c4MXT2daJp0iF5+zxJRqPtvW1rzN7Bi8BHIHJo3jmt8DwyStP9Wr6ctoQAR6gEuXP3Sij/LLVFXi89Rch5EqvQOkD mike@europa
-  EOH
+template "/home/oracle/.ssh/authorized_keys" do
+	source "authorized_keys.erb"
+	owner "oracle"
+	group "root"
+	mode "0600"
+	variables :ssh_keys => ssh_keys
 end
 
 file "/etc/sudoers.d/oracle" do

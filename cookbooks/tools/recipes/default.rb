@@ -37,18 +37,6 @@ node["tools"]["deb_packages"].each do |package|
 	end
 end
 
-node["tools"]["scripts"].each do |script|
-	bash "Copying script #{script}" do
-		user 'root'
-		group 'users'
-		umask '007'
-		code <<-EOH
-			cp /data/file_repo/scripts/#{script} /apps/bin
-		EOH
-		not_if { ::File.exists?("/apps/bin/#{script}") }
-	end
-end
-
 bash 'Apt upgrade' do
   user 'root'
   group 'root'
@@ -72,6 +60,18 @@ directory "/apps/bin" do
   group "users"
   mode 00774
   action :create
+end
+
+node["tools"]["scripts"].each do |script|
+	bash "Copying script #{script}" do
+		user 'root'
+		group 'users'
+		umask '007'
+		code <<-EOH
+			cp /data/file_repo/scripts/#{script} /apps/bin
+		EOH
+		not_if { ::File.exists?("/apps/bin/#{script}") }
+	end
 end
 
 users.each do |user|
@@ -250,6 +250,10 @@ users.each do |user|
 		file.write_file
 	  end
 	end	
+end
+
+gem_package "rake" do
+  action :install
 end
 
 gem_package "vmc" do
