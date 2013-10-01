@@ -252,6 +252,29 @@ users.each do |user|
 	end	
 end
 
+bash 'Install Cassandra' do
+  user 'root'
+  group 'root'
+  code <<-EOH
+    tar xzf /data/file_repo/apache-cassandra-1.0.12-bin.tar.gz -C /apps
+	ln -s /apps/apache-cassandra-1.0.12 /apps/apache-cassandra
+    EOH
+  not_if { ::File.exists?('/apps/apache-cassandra-1.0.12') }
+end
+
+users.each do |user|
+	ruby_block "Set Cassandra path for user #{user['name']}" do
+	  block do
+		file = Chef::Util::FileEdit.new("/home/#{user['name']}/.bashrc")
+		file.insert_line_if_no_match(
+		  "# Set Cassandra path for user",
+		  "\n# Set Cassandra path for user\nexport CASSANDRA_HOME=/apps/apache-cassandra\nexport PATH=$CASSANDRA_HOME/bin:$PATH"
+		)
+		file.write_file
+	  end
+	end	
+end
+
 gem_package "rake" do
   action :install
 end

@@ -8,7 +8,26 @@ default["tools"]["packages"] = [
 	"calibre",
 	"wireshark",
 	"openconnect",
-	"network-manager-openconnect-gnome"
+	"network-manager-openconnect-gnome",
+	"xvfb",
+	"balance",
+	"python-node",
+	"python-setuptools",
+	"libyaml-dev",
+	"python-pip",
+	"python-dev",
+	"libasound2-plugins:i386",
+	"mysql-workbench",
+	"sshfs",
+	"libxslt-dev",
+	"libxml2-dev",
+	"libvirt-dev",
+	"libvirt-bin",
+	"xen-utils-common",
+	"xcp-xe",
+	"stunnel",
+	"hplip-gui",
+	"libjna-java"
 ]
 
 default["tools"]["deb_packages"] = [
@@ -18,6 +37,9 @@ default["tools"]["deb_packages"] = [
 ]
 
 default["tools"]["scripts"] = [
+	"aduserdump",
+	"admodify",
+	"adgroups",
 	"backup",
 	"dbcreate",
 	"dbicreate",

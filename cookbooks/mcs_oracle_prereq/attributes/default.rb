@@ -1,3 +1,5 @@
+default[:chef_secret_path] = '/vagrant/chef_secret'
+
 default["oracle"]["db_packages"] = [
   "xorg-x11-server-Xorg",
   "xorg-x11-server-utils",

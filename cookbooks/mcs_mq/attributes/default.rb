@@ -1,3 +1,5 @@
+default[:chef_secret_path] = '/vagrant/chef_secret'
+
 default["mq"]["i686_packages"] = [
   "libgcc",
   "glibc",
