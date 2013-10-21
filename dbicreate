@@ -1,4 +1,0 @@
-#!/bin/bash
-knife data bag create $1 $2 --secret-file /data/chef_secret
-knife data bag show $1 $2 -Fj > /data/chef-repo/data_bags/$1/$2.json
-

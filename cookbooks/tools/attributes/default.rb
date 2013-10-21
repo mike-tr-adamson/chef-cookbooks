@@ -11,7 +11,7 @@ default["tools"]["packages"] = [
 	"network-manager-openconnect-gnome",
 	"xvfb",
 	"balance",
-	"python-node",
+	"python-nose",
 	"python-setuptools",
 	"libyaml-dev",
 	"python-pip",

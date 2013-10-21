@@ -1,4 +1,0 @@
-#!/bin/bash
-knife data bag create $1
-mkdir /data/chef-repo/data_bags/$1
-
