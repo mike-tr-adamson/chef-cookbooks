@@ -18,17 +18,17 @@ template "/etc/pam.d/sshd" do
 	source "pamd_ssh.erb"
 end
 
-secret = Chef::EncryptedDataBagItem.load_secret("#{node[:chef_secret_path]}")
-
 encrypted_users = data_bag('users')
 
 users = []
 ssh_keys = []
 
 encrypted_users.each do |encrypted_user|
-	user = Chef::EncryptedDataBagItem.load("users", encrypted_user, secret)
-	users << user
-	ssh_keys << user['ssh_public_key']
+	user = Chef::EncryptedDataBagItem.load("users", encrypted_user)
+	if node['users']['installed'].include?(user['name'])
+		users << user
+		ssh_keys << user['ssh_public_key']
+	end
 end
 
 users.each do |user|
@@ -50,29 +50,59 @@ users.each do |user|
 		end
 	end
 	ssh_dir = "#{home_dir}/.ssh"
-	if not File.exist?(ssh_dir)
-		directory ssh_dir do
-			owner user['uid']
-			group 1001
-			mode "0700"
-		end
+	directory "#{home_dir}/.ssh" do
+		owner user['uid']
+		group 1001
+		mode "0700"
 	end
-	template "#{ssh_dir}/authorized_keys" do
+	directory "#{home_dir}/bin" do
+		owner user['uid']
+		group 1001
+		mode "0700"
+	end
+    directory "/data/userdata/documents/#{user['name']}" do
+		owner user['uid']
+		group 1001
+    end
+    directory "/data/userdata/music/#{user['name']}" do
+		owner user['uid']
+		group 1001
+    end
+    directory "/data/userdata/pictures/#{user['name']}" do
+		owner user['uid']
+		group 1001
+    end
+    directory "/data/userdata/videos/#{user['name']}" do
+		owner user['uid']
+		group 1001
+    end
+    directory "/data/userdata/workspaces/#{user['name']}" do
+		owner user['uid']
+		group 1001
+    end
+    directory "/data/userdata/keys/#{user['name']}" do
+		owner user['uid']
+		group 1001
+    end
+    directory "/data/userdata/vms/#{user['name']}" do
+		owner user['uid']
+		group 1001
+    end
+	template "#{home_dir}/.ssh/authorized_keys" do
 		source "authorized_keys.erb"
 		owner user['uid']
 		group 1001
 		mode "0600"
 		variables :ssh_keys => ssh_keys
 	end
-
-	template "#{ssh_dir}/id_rsa.pub" do
+	template "#{home_dir}/.ssh/id_rsa.pub" do
 		source "rsa_public_key.erb"
 		owner user['uid']
 		group 1001
 		mode "0400"
 		variables :public_key => user['ssh_public_key']
 	end
-	template "#{ssh_dir}/id_rsa" do
+	template "#{home_dir}/.ssh/id_rsa" do
 		source "rsa_private_key.erb"
 		owner user['uid']
 		group 1001

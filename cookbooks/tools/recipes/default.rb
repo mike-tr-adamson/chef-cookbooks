@@ -15,16 +15,6 @@ encrypted_users.each do |encrypted_user|
 	users << Chef::EncryptedDataBagItem.load("users", encrypted_user, secret)
 end
 
-#bash 'Install xorg-edgy' do
-#  user 'root'
-#  group 'root'
-#  code <<-EOH
-#  add-apt-repository ppa:xorg-edgers/ppa
-#  apt-get update
-#  EOH
-#end
-
-
 node["tools"]["packages"].each do |package|
 	package package
 end

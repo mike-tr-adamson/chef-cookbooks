@@ -1,0 +1,39 @@
+{
+  "id": "trading",
+  "name": {
+    "encrypted_data": "anDKVkXfkjnSTYIrpEAR9BUz5AWjaNXyjFM15esFdys=\n",
+    "iv": "WkdM9ypUNVcAUceUOUZBBg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "comment": {
+    "encrypted_data": "cN/C6VhfG4NjNKAuqC+yWES88FXcIkBTxhG99Mmv5FFmHm8cv/tIGLwr/3jk\n4blv\n",
+    "iv": "pcaeYLZldf6yB1ErbV77dA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "uid": {
+    "encrypted_data": "UbUsr/kesWy7ZN+3FnG5iCamI/CvJdsNv3ouV8c+g60=\n",
+    "iv": "zpY7ScAP+G9igxFNt554Ww==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "groups": {
+    "encrypted_data": "bb2rxE9h5cjtTbBQYnm7A9iIoYC55Jmeg/Y95eykmwI=\n",
+    "iv": "lOLO8xfYIgAk0fxYagWurg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "ssh_private_key": {
+    "encrypted_data": "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\nWbQH9XbyPJdfLNwFWyV0VVYG\n",
+    "iv": "FDKen/BO+7fxPpXAVQjuHw==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "ssh_public_key": {
+    "encrypted_data": "bpYcX6hZAvb6PccxId35YOrk1Gn3J8jArViV7F3lsm89JS/hHl9m442AKBEl\nZrQNEE4j6DyN+IomjXnjzBbwlzR2Uod4nRAwMD7tLshHvQPK0KOE4E9pyWEk\nG/+5oxKu6hvUQPZmeRzRH+IiGrT/ybZUUcFR/EdUr6NWexCQEWdDXBRcCxUZ\nTrRs5bYYnok/YKL+mWcJ7oTLb/NoRSagZarJHQ7gZKHqJhPx81ca2eMPbmWp\nKmJxG3jn22G9J4KiRBEd+eRIhYbk0iM57m3zozpabbJSDVbryY9uoJ8HcyH6\nOpQe/qOmVR+XR22icDtm3AN7b+/ZfLp1MFMs4owdsJzBJNbHaHdUEKCHyETL\nQVoB5XKuBDjuw6Ak7VmJFOgRbdV6sxRrnJMBlzGAOoJG6l3xdTDw1yH/uoRU\nvhAqA/HqUpRJhlAoi305ZJkj1smvkJ5/fGj4vq6LpD2MEEBUv5RzH67KsJi3\nAJtBWa8ZOGhpt5wFsjYeuSUNOG7KvG7R9WOG97Y3+Ah2kY4peG1RY7aE1oUs\nmfHIjdl9Cl/iems=\n",
+    "iv": "cLZST8725KYlQ2V5sZw64Q==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}

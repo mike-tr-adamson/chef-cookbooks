@@ -1,0 +1,40 @@
+{
+  "name": "datastax",
+  "description": "DataStax laptop",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "openssh": {
+      "client": {
+        "strict_host_key_checking": "no"
+      },
+      "server": {
+        "print_motd": "no",
+        "print_lastlog": "no",
+        "x11_forwarding": "yes"
+      }
+    },
+    "users": {
+      "installed": [
+        "mike",
+        "datastax",
+        "trading"
+      ]
+    },
+    "java": {
+      "mike": "1.7",
+      "datastax": "1.7",
+      "trading": "1.7"
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[openssh]",
+    "recipe[openssh::iptables]",
+    "recipe[users]",
+    "recipe[java]"
+  ],
+  "env_run_lists": {
+  }
+}
