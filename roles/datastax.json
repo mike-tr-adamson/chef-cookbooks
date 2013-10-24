@@ -21,9 +21,41 @@
       ]
     },
     "java": {
-      "mike": "1.7",
-      "datastax": "1.7",
-      "trading": "1.7"
+      "users": {
+        "datastax": "1.7",
+        "trading": "1.7"
+      }
+    },
+    "gradle": {
+      "users": [
+        "trading"
+      ]
+    },
+    "ant": {
+      "users": [
+        "datastax"
+      ]
+    },
+    "eclipse": {
+      "users": [
+        "datastax",
+        "trading"
+      ]
+    },
+    "mat": {
+      "users": [
+        "datastax"
+      ]
+    },
+    "subversion": {
+      "users": [
+        "trading"
+      ]
+    },
+    "chef": {
+      "users": [
+        "mike"
+      ]
     }
   },
   "override_attributes": {
@@ -33,7 +65,15 @@
     "recipe[openssh]",
     "recipe[openssh::iptables]",
     "recipe[users]",
-    "recipe[java]"
+    "recipe[java]",
+    "recipe[gradle]",
+    "recipe[ant]",
+    "recipe[eclipse]",
+    "recipe[memoryanalyser]",
+    "recipe[subversion]",
+    "recipe[chef]",
+    "recipe[packages]",
+    "recipe[scripts]"
   ],
   "env_run_lists": {
   }

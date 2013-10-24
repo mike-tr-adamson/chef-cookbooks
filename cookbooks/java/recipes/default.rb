@@ -28,11 +28,10 @@ bash 'Install Java 1.7' do
   not_if { ::File.exists?('/apps/jdk1.7.0.09') }
 end
 
-node['users']['installed'].each do |user|
+node['java']['users'].each do |user, version|
 	ruby_block "Set JAVA_HOME for user #{user}" do
 	  block do
 		file = Chef::Util::FileEdit.new("/home/#{user}/.bashrc")
-        version = node['java']["#{user}"]
 		file.insert_line_if_no_match(
 		  "# Set JAVA_HOME for user",
 		  "\n# Set JAVA_HOME for user\nexport JAVA_HOME=/apps/jdk#{version}\nexport PATH=$JAVA_HOME/bin:$PATH"
