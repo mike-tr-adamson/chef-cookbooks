@@ -6,6 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+require 'base64'
+
 group "users" do
 	gid 1001
 end
@@ -55,11 +57,48 @@ users.each do |user|
 		group 1001
 		mode "0700"
 	end
+	directory "#{home_dir}/.keys" do
+		owner user['uid']
+		group 1001
+		mode "0700"
+	end
 	directory "#{home_dir}/bin" do
 		owner user['uid']
 		group 1001
 		mode "0700"
 	end
+	directory "/data" do
+		owner "root"
+		group "root"
+	end
+	directory "/data/userdata" do
+		owner "root"
+        group 1001
+    end
+	directory "/data/userdata/documents" do
+		owner "root"
+        group 1001
+    end
+	directory "/data/userdata/music" do
+		owner "root"
+        group 1001
+    end
+	directory "/data/userdata/pictures" do
+		owner "root"
+        group 1001
+    end
+	directory "/data/userdata/videos" do
+		owner "root"
+        group 1001
+    end
+	directory "/data/userdata/workspaces" do
+		owner "root"
+        group 1001
+    end
+	directory "/data/userdata/vms" do
+		owner "root"
+        group 1001
+    end
     directory "/data/userdata/documents/#{user['name']}" do
 		owner user['uid']
 		group 1001
@@ -77,10 +116,6 @@ users.each do |user|
 		group 1001
     end
     directory "/data/userdata/workspaces/#{user['name']}" do
-		owner user['uid']
-		group 1001
-    end
-    directory "/data/userdata/keys/#{user['name']}" do
 		owner user['uid']
 		group 1001
     end
@@ -122,6 +157,34 @@ users.each do |user|
 		group 1001
 		mode "0400"
 	end
+    unless user['client_key'].nil? 
+		file "#{home_dir}/.keys/client.p12" do
+			content Base64.decode64(user['client_key'])
+			owner user['uid']
+			group 1001
+			mode "0400"
+			action :create
+		end
+	end
+    unless user['trust_key'].nil? 
+		file "#{home_dir}/.keys/trust.jks" do
+			content Base64.decode64(user['trust_key'])
+			owner user['uid']
+			group 1001
+			mode "0400"
+			action :create
+		end
+	end
+    unless user['authority_key'].nil? 
+		file "#{home_dir}/.keys/authority.pem" do
+			content Base64.decode64(user['authority_key'])
+			owner user['uid']
+			group 1001
+			mode "0400"
+			action :create
+		end
+	end
+
 	directory "#{home_dir}/Documents" do
 		action :delete
 		not_if "test -L #{home_dir}/Documents"
@@ -177,12 +240,6 @@ users.each do |user|
 		group 1001
 		to "/data/userdata/workspaces/#{user['name']}"
 		not_if "test -L #{home_dir}/workspaces"
-	end
-	link "#{home_dir}/keys" do
-		owner user['uid']
-		group 1001
-		to "/data/userdata/keys/#{user['name']}"
-		not_if "test -L #{home_dir}/keys"
 	end
 	link "#{home_dir}/VirtualBox VMs" do
 		owner user['uid']

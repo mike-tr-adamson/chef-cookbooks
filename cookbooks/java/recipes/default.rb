@@ -11,7 +11,7 @@ bash 'Install Java 1.6' do
   group 'root'
   code <<-EOH
     mkdir -p /apps/jdk1.6.0.30
-    tar xzf /data/file_repo/sun-jdk-linux-x86_64-1.6.0.30.tar.gz -C /apps/jdk1.6.0.30
+    tar xzf #{node['repo_dir']}/sun-jdk-linux-x86_64-1.6.0.30.tar.gz -C /apps/jdk1.6.0.30
     ln -s /apps/jdk1.6.0.30 /apps/jdk1.6
     EOH
   not_if { ::File.exists?('/apps/jdk1.6.0.30') }
@@ -22,7 +22,7 @@ bash 'Install Java 1.7' do
   group 'root'
   code <<-EOH
     mkdir -p /apps/jdk1.7.0.09
-    tar xzf /data/file_repo/sun-jdk-linux-x86_64-1.7.0.09.tar.gz -C /apps/jdk1.7.0.09
+    tar xzf #{node['repo_dir']}/sun-jdk-linux-x86_64-1.7.0.09.tar.gz -C /apps/jdk1.7.0.09
     ln -s /apps/jdk1.7.0.09 /apps/jdk1.7
     EOH
   not_if { ::File.exists?('/apps/jdk1.7.0.09') }

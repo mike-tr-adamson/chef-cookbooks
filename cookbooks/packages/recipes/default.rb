@@ -12,15 +12,9 @@ end
 
 node["packages"]["debs"].each do |deb|
 	dpkg_package deb do
-		source "/data/file_repo/#{deb}.deb"
+		source "#{node['repo_dir']}/data/file_repo/#{deb}.deb"
 		ignore_failure true
 		action :install
-	end
-end
-
-node["packages"]["gems"].each do |gem|
-	gem_package gem do
-	  action :install
 	end
 end
 

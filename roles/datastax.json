@@ -1,17 +1,37 @@
 {
-  "name": "datastax",
-  "description": "DataStax laptop",
+  "chef_type": "role",
   "json_class": "Chef::Role",
+  "description": "DataStax laptop",
+  "run_list": [
+    "recipe[openssh]",
+    "recipe[openssh::iptables]",
+    "recipe[users]",
+    "recipe[java]",
+    "recipe[packages]",
+    "recipe[scripts]"
+  ],
+  "env_run_lists": {
+  },
   "default_attributes": {
+    "subversion": {
+      "users": [
+        "trading"
+      ]
+    },
     "openssh": {
+      "server": {
+        "print_lastlog": "no",
+        "print_motd": "no",
+        "x11_forwarding": "yes"
+      },
       "client": {
         "strict_host_key_checking": "no"
-      },
-      "server": {
-        "print_motd": "no",
-        "print_lastlog": "no",
-        "x11_forwarding": "yes"
       }
+    },
+    "ant": {
+      "users": [
+        "datastax"
+      ]
     },
     "users": {
       "installed": [
@@ -20,18 +40,23 @@
         "trading"
       ]
     },
+    "gradle": {
+      "users": [
+        "trading"
+      ]
+    },
+    "chef": {
+      "users": [
+        "mike"
+      ]
+    },
     "java": {
       "users": {
         "datastax": "1.7",
         "trading": "1.7"
       }
     },
-    "gradle": {
-      "users": [
-        "trading"
-      ]
-    },
-    "ant": {
+    "mat": {
       "users": [
         "datastax"
       ]
@@ -41,40 +66,9 @@
         "datastax",
         "trading"
       ]
-    },
-    "mat": {
-      "users": [
-        "datastax"
-      ]
-    },
-    "subversion": {
-      "users": [
-        "trading"
-      ]
-    },
-    "chef": {
-      "users": [
-        "mike"
-      ]
     }
   },
+  "name": "datastax",
   "override_attributes": {
-  },
-  "chef_type": "role",
-  "run_list": [
-    "recipe[openssh]",
-    "recipe[openssh::iptables]",
-    "recipe[users]",
-    "recipe[java]",
-    "recipe[gradle]",
-    "recipe[ant]",
-    "recipe[eclipse]",
-    "recipe[memoryanalyser]",
-    "recipe[subversion]",
-    "recipe[chef]",
-    "recipe[packages]",
-    "recipe[scripts]"
-  ],
-  "env_run_lists": {
   }
 }

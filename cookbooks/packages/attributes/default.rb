@@ -36,9 +36,3 @@ default["packages"]["debs"] = [
 	"skype-ubuntu-precise_4.2.0.11-1_i386"
 ]
 
-default["packages"]["gems"] = [
-	"rake",
-	"vmc",
-	"rvm"
-]
-

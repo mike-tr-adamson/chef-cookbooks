@@ -14,7 +14,7 @@ node['users']['installed'].each do |user|
 			group 'users'
 			umask '007'
 			code <<-EOH
-				cp /data/file_repo/scripts/#{script} #{bin_dir}
+				cp #{node['repo_dir']}/scripts/#{script} #{bin_dir}
 			EOH
 			not_if { ::File.exists?("#{bin_dir}/#{script}") }
 		end

@@ -7,7 +7,8 @@ default["scripts"]["mike"] = [
 	"dbicreate",
 	"dbiedit",
 	"rolecreate",
-	"roleedit"
+	"roleedit",
+    "fetchtradingdata"
 ]
 default["scripts"]["datastax"] = [
 	"dbcreate",
