@@ -10,7 +10,7 @@ bash 'Install Gradle' do
   user 'root'
   group 'root'
   code <<-EOH
-    unzip -q /data/file_repo/gradle-1.8-all.zip -d /apps
+    unzip -q #{node['repo_dir']}/gradle-1.8-all.zip -d /apps
     ln -s /apps/gradle-1.8 /apps/gradle
     EOH
   not_if { ::File.exists?('/apps/gradle-1.8') }

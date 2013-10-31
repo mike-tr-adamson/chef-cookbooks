@@ -10,7 +10,7 @@ bash 'Install Eclipse' do
   user 'root'
   group 'root'
   code <<-EOH
-    tar --no-same-owner --no-same-permissions -xzf /data/file_repo/eclipse-jee-kepler-R-linux-gtk-x86_64.tar.gz -C /apps
+    tar --no-same-owner --no-same-permissions -xzf #{node['repo_dir']}/eclipse-jee-kepler-R-linux-gtk-x86_64.tar.gz -C /apps
     mv /apps/eclipse /apps/eclipse-jee-kepler
     ln -s /apps/eclipse-jee-kepler /apps/eclipse
     EOH
@@ -28,7 +28,7 @@ bash 'Install Subclipse plugin' do
   user 'root'
   group 'root'
   code <<-EOH
-    unzip -q /data/file_repo/subclipse-1.6.18.zip -d /apps/eclipse-jee-kepler/dropins/subclipse
+    unzip -q #{node['repo_dir']}/subclipse-1.6.18.zip -d /apps/eclipse-jee-kepler/dropins/subclipse
     EOH
   not_if { ::File.exists?('/apps/eclipse-jee-kepler/dropins/subclipse/artifacts.xml') }
 end

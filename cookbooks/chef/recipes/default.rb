@@ -12,12 +12,12 @@ node['chef']['users'].each do |user|
 		group 'users'
 	end
 	bash "Copy knife files for #{user}" do
-		user "#{user}"
-		group 'users'
+		user 'root'
+		group 'root'
 		code <<-EOH
-			cp /data/file_repo/knife.rb /home/#{user}/.chef
-			cp /data/file_repo/mike_tr_adamson.pem /home/#{user}/.chef
-			cp /data/file_repo/mike_tr_adamson-validator.pem /home/#{user}/.chef
+			cp #{node['repo_dir']}/knife.rb /home/#{user}/.chef
+			cp #{node['repo_dir']}/mike_tr_adamson.pem /home/#{user}/.chef
+			cp #{node['repo_dir']}/mike_tr_adamson-validator.pem /home/#{user}/.chef
 		EOH
 		not_if { ::File.exists?("/home/#{user}/.chef/knife.rb") }
 	end

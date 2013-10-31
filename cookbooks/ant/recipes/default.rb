@@ -10,7 +10,7 @@ bash 'Install Ant' do
   user 'root'
   group 'root'
   code <<-EOH
-    tar xzf /data/file_repo/apache-ant-1.9.1-bin.tar.gz -C /apps
+    tar xzf #{node['repo_dir']}/apache-ant-1.9.1-bin.tar.gz -C /apps
     ln -s /apps/apache-ant-1.9.1 /apps/apache-ant
     EOH
   not_if { ::File.exists?('/apps/apache-ant-1.9.1') }

@@ -10,7 +10,7 @@ bash 'Install MAT' do
   user 'root'
   group 'root'
   code <<-EOH
-    unzip -q /data/file_repo/MemoryAnalyzer-1.3.0.20130517-linux.gtk.x86_64.zip -d /apps
+    unzip -q #{node['repo_dir']}/MemoryAnalyzer-1.3.0.20130517-linux.gtk.x86_64.zip -d /apps
     EOH
   not_if { ::File.exists?('/apps/mat') }
 end

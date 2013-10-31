@@ -7,8 +7,6 @@ default["packages"]["apps"] = [
 	"rubygems",
 	"calibre",
 	"wireshark",
-	"openconnect",
-	"network-manager-openconnect-gnome",
 	"xvfb",
 	"balance",
 	"python-nose",
@@ -28,11 +26,5 @@ default["packages"]["apps"] = [
 	"stunnel",
 	"hplip-gui",
 	"libjna-java"
-]
-
-default["packages"]["debs"] = [
-	"vagrant_1.2.2_x86_64",
-	"google-chrome-stable_current_amd64",
-	"skype-ubuntu-precise_4.2.0.11-1_i386"
 ]
 

@@ -1,36 +1,60 @@
 {
-  "chef_type": "role",
-  "json_class": "Chef::Role",
-  "description": "DataStax laptop",
+  "env_run_lists": {
+  },
   "run_list": [
     "recipe[openssh]",
     "recipe[openssh::iptables]",
     "recipe[users]",
     "recipe[java]",
+    "recipe[ant]",
+    "recipe[chef]",
+    "recipe[eclipse]",
+    "recipe[gradle]",
+    "recipe[gradle::options]",
+    "recipe[memoryanalyser]",
+    "recipe[mysql]",
+    "recipe[subversion]",
     "recipe[packages]",
-    "recipe[scripts]"
+    "recipe[scripts]",
+    "recipe[vagrant]"
   ],
-  "env_run_lists": {
-  },
+  "chef_type": "role",
   "default_attributes": {
-    "subversion": {
+    "java": {
+      "users": {
+        "datastax": "1.7",
+        "trading": "1.7"
+      }
+    },
+    "eclipse": {
       "users": [
+        "datastax",
         "trading"
+      ]
+    },
+    "ant": {
+      "users": [
+        "datastax"
+      ]
+    },
+    "mat": {
+      "users": [
+        "datastax"
       ]
     },
     "openssh": {
       "server": {
+        "x11_forwarding": "yes",
         "print_lastlog": "no",
-        "print_motd": "no",
-        "x11_forwarding": "yes"
+        "print_motd": "no"
       },
       "client": {
         "strict_host_key_checking": "no"
       }
     },
-    "ant": {
+    "chef": {
       "users": [
-        "datastax"
+        "mike"
       ]
     },
     "users": {
@@ -40,35 +64,23 @@
         "trading"
       ]
     },
-    "gradle": {
+    "subversion": {
       "users": [
         "trading"
       ]
     },
-    "chef": {
+    "gradle": {
+      "ssl_users": [
+        "trading"
+      ],
       "users": [
-        "mike"
-      ]
-    },
-    "java": {
-      "users": {
-        "datastax": "1.7",
-        "trading": "1.7"
-      }
-    },
-    "mat": {
-      "users": [
-        "datastax"
-      ]
-    },
-    "eclipse": {
-      "users": [
-        "datastax",
         "trading"
       ]
     }
   },
   "name": "datastax",
+  "description": "DataStax laptop",
   "override_attributes": {
-  }
+  },
+  "json_class": "Chef::Role"
 }
