@@ -16,6 +16,7 @@ bash 'Apt upgrade' do
   user 'root'
   group 'root'
   code <<-EOH
+	apt-get -y install libasound2-plugins:i386
     apt-get -fy install
   EOH
 end

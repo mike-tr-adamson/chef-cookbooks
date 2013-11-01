@@ -1,6 +1,5 @@
 default["packages"]["apps"] = [
 	"apt-file",
-	"virtualbox-nonfree",
 	"meld",
 	"vim",
 	"subversion",
@@ -14,7 +13,6 @@ default["packages"]["apps"] = [
 	"libyaml-dev",
 	"python-pip",
 	"python-dev",
-	"libasound2-plugins:i386",
 	"mysql-workbench",
 	"sshfs",
 	"libxslt-dev",

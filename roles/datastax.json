@@ -1,25 +1,10 @@
 {
-  "env_run_lists": {
-  },
-  "run_list": [
-    "recipe[openssh]",
-    "recipe[openssh::iptables]",
-    "recipe[users]",
-    "recipe[java]",
-    "recipe[ant]",
-    "recipe[chef]",
-    "recipe[eclipse]",
-    "recipe[gradle]",
-    "recipe[gradle::options]",
-    "recipe[memoryanalyser]",
-    "recipe[mysql]",
-    "recipe[subversion]",
-    "recipe[packages]",
-    "recipe[scripts]",
-    "recipe[vagrant]"
-  ],
-  "chef_type": "role",
   "default_attributes": {
+    "chef": {
+      "users": [
+        "mike"
+      ]
+    },
     "java": {
       "users": {
         "datastax": "1.7",
@@ -37,9 +22,16 @@
         "datastax"
       ]
     },
-    "mat": {
+    "subversion": {
       "users": [
-        "datastax"
+        "trading"
+      ]
+    },
+    "users": {
+      "installed": [
+        "mike",
+        "datastax",
+        "trading"
       ]
     },
     "openssh": {
@@ -52,34 +44,43 @@
         "strict_host_key_checking": "no"
       }
     },
-    "chef": {
-      "users": [
-        "mike"
-      ]
-    },
-    "users": {
-      "installed": [
-        "mike",
-        "datastax",
-        "trading"
-      ]
-    },
-    "subversion": {
-      "users": [
-        "trading"
-      ]
-    },
     "gradle": {
-      "ssl_users": [
+      "users": [
         "trading"
       ],
-      "users": [
+      "ssl_users": [
         "trading"
+      ]
+    },
+    "mat": {
+      "users": [
+        "datastax"
       ]
     }
   },
-  "name": "datastax",
   "description": "DataStax laptop",
+  "env_run_lists": {
+  },
+  "run_list": [
+    "recipe[openssh]",
+    "recipe[openssh::iptables]",
+    "recipe[users]",
+    "recipe[java]",
+    "recipe[ant]",
+    "recipe[chef]",
+    "recipe[eclipse]",
+    "recipe[gradle]",
+    "recipe[gradle::options]",
+    "recipe[memoryanalyser]",
+    "recipe[mysql]",
+    "recipe[subversion]",
+    "recipe[packages]",
+    "recipe[scripts]",
+    "recipe[vagrant]",
+    "recipe[virtualbox]"
+  ],
+  "chef_type": "role",
+  "name": "datastax",
   "override_attributes": {
   },
   "json_class": "Chef::Role"

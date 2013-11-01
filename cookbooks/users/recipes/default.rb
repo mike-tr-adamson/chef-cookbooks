@@ -75,6 +75,14 @@ users.each do |user|
 		owner "root"
         group 1001
     end
+	directory "/data/downloads" do
+		owner "root"
+        group 1001
+    end
+	directory "/data/securedata" do
+		owner "root"
+        group 1001
+    end
 	directory "/data/userdata/documents" do
 		owner "root"
         group 1001
