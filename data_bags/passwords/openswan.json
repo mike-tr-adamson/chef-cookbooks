@@ -1,0 +1,27 @@
+{
+  "id": "openswan",
+  "username": {
+    "encrypted_data": "M5IswGk80Rxb1cD9wHyXfmILSEk86pMjorWjh8HTsL8=\n",
+    "iv": "0tTkOeURh6mp7U/1/zGe+w==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "password": {
+    "encrypted_data": "9ruojRp+OZOcbVKoB0gT6gxkJRyRs80C9LwMeHqFojw=\n",
+    "iv": "5LIKEFbmRpl4Li6SH0Ir3g==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "shared_key": {
+    "encrypted_data": "a7jGMboUysjguf7rcGCf1OobkmRVl9zWgh+jdqvbqavmJXZsv5ew8nb07/kc\nzh2P\n",
+    "iv": "WbhsMVFNwyT1E4iVTRWtQg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "vpn_server_ip": {
+    "encrypted_data": "iBPAafrDEYnShUvo3Aw8G5hx26P8+ZsPmlL2dC7OMzw=\n",
+    "iv": "l4Hbqi3vNR4uuErCF8GzwQ==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}

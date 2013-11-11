@@ -23,6 +23,8 @@ default["packages"]["apps"] = [
 	"xcp-xe",
 	"stunnel",
 	"hplip-gui",
-	"libjna-java"
+	"libjna-java",
+    "cdrdao",
+    "cue2toc"
 ]
 

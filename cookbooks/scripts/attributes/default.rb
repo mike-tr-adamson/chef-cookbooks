@@ -15,7 +15,9 @@ default["scripts"]["datastax"] = [
 	"dbicreate",
 	"dbiedit",
 	"rolecreate",
-	"roleedit"
+	"roleedit",
+    "sunnyvale-vpn",
+    "java_debug"
 ]
 default["scripts"]["trading"] = [
 	"dbcreate",

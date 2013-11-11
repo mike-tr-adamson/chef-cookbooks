@@ -17,6 +17,18 @@ bash 'Install Java 1.6' do
   not_if { ::File.exists?('/apps/jdk1.6.0.30') }
 end
 
+bash 'Install Java 1.6 JCE Policy files' do
+  user 'root'
+  group 'root'
+  code <<-EOH
+	unzip -q /data/file_repo/jce_policy-6.zip -d /tmp
+	cp /tmp/jce/local_policy.jar /apps/jdk1.6/jre/lib/security
+	cp /tmp/jce/US_export_policy.jar /apps/jdk1.6/jre/lib/security
+    echo "DONE" > /apps/jdk1.6/encryptionupgraded
+    EOH
+  not_if { ::File.exists?('/apps/jdk1.6/encryptionupgraded') }
+end
+
 bash 'Install Java 1.7' do
   user 'root'
   group 'root'

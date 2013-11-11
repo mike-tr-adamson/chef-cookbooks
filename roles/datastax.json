@@ -1,15 +1,40 @@
 {
+  "name": "datastax",
+  "description": "DataStax laptop",
+  "json_class": "Chef::Role",
   "default_attributes": {
-    "chef": {
+    "openssh": {
+      "server": {
+        "print_lastlog": "no",
+        "print_motd": "no",
+        "x11_forwarding": "yes"
+      },
+      "client": {
+        "strict_host_key_checking": "no"
+      }
+    },
+    "gradle": {
+      "ssl_users": [
+        "trading"
+      ],
       "users": [
-        "mike"
+        "trading"
       ]
     },
-    "java": {
-      "users": {
-        "datastax": "1.7",
-        "trading": "1.7"
-      }
+    "maven": {
+      "users": [
+        "datastax"
+      ]
+    },
+    "visualvm": {
+      "users": [
+        "datastax"
+      ]
+    },
+    "mat": {
+      "users": [
+        "datastax"
+      ]
     },
     "eclipse": {
       "users": [
@@ -17,15 +42,21 @@
         "trading"
       ]
     },
-    "ant": {
-      "users": [
-        "datastax"
-      ]
-    },
     "subversion": {
       "users": [
         "trading"
       ]
+    },
+    "chef": {
+      "users": [
+        "mike"
+      ]
+    },
+    "java": {
+      "users": {
+        "trading": "1.7",
+        "datastax": "1.6"
+      }
     },
     "users": {
       "installed": [
@@ -34,33 +65,15 @@
         "trading"
       ]
     },
-    "openssh": {
-      "server": {
-        "x11_forwarding": "yes",
-        "print_lastlog": "no",
-        "print_motd": "no"
-      },
-      "client": {
-        "strict_host_key_checking": "no"
-      }
-    },
-    "gradle": {
-      "users": [
-        "trading"
-      ],
-      "ssl_users": [
-        "trading"
-      ]
-    },
-    "mat": {
+    "ant": {
       "users": [
         "datastax"
       ]
     }
   },
-  "description": "DataStax laptop",
-  "env_run_lists": {
+  "override_attributes": {
   },
+  "chef_type": "role",
   "run_list": [
     "recipe[openssh]",
     "recipe[openssh::iptables]",
@@ -69,6 +82,7 @@
     "recipe[ant]",
     "recipe[chef]",
     "recipe[eclipse]",
+    "recipe[maven]",
     "recipe[gradle]",
     "recipe[gradle::options]",
     "recipe[memoryanalyser]",
@@ -77,11 +91,13 @@
     "recipe[packages]",
     "recipe[scripts]",
     "recipe[vagrant]",
-    "recipe[virtualbox]"
+    "recipe[virtualbox]",
+    "recipe[hipchat]",
+    "recipe[skype]",
+    "recipe[visualvm]",
+    "recipe[openswan]",
+    "recipe[googletalk]"
   ],
-  "chef_type": "role",
-  "name": "datastax",
-  "override_attributes": {
-  },
-  "json_class": "Chef::Role"
+  "env_run_lists": {
+  }
 }

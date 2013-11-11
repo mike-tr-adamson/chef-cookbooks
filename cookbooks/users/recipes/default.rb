@@ -99,6 +99,10 @@ users.each do |user|
 		owner "root"
         group 1001
     end
+	directory "/data/userdata/repos" do
+		owner "root"
+        group 1001
+    end
 	directory "/data/userdata/workspaces" do
 		owner "root"
         group 1001
@@ -124,6 +128,10 @@ users.each do |user|
 		group 1001
     end
     directory "/data/userdata/workspaces/#{user['name']}" do
+		owner user['uid']
+		group 1001
+    end
+    directory "/data/userdata/repos/#{user['name']}" do
 		owner user['uid']
 		group 1001
     end
@@ -248,6 +256,12 @@ users.each do |user|
 		group 1001
 		to "/data/userdata/workspaces/#{user['name']}"
 		not_if "test -L #{home_dir}/workspaces"
+	end
+	link "#{home_dir}/repos" do
+		owner user['uid']
+		group 1001
+		to "/data/userdata/repos/#{user['name']}"
+		not_if "test -L #{home_dir}/repos"
 	end
 	link "#{home_dir}/VirtualBox VMs" do
 		owner user['uid']
