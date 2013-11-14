@@ -6,6 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+openswan = Chef::EncryptedDataBagItem.load("passwords", "openswan")
+
 bash 'Install openswan' do
   user 'root'
   group 'root'
