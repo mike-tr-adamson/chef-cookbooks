@@ -25,6 +25,12 @@ default["packages"]["apps"] = [
 	"hplip-gui",
 	"libjna-java",
     "cdrdao",
-    "cue2toc"
+    "cue2toc",
+	"ubuntu-virt-server",
+	"python-vm-builder",
+	"virt-manager",
+	"apache2",
+	"thrift-compiler",
+	"libssl0.9.8"
 ]
 

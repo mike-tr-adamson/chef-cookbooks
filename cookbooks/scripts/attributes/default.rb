@@ -17,7 +17,10 @@ default["scripts"]["datastax"] = [
 	"rolecreate",
 	"roleedit",
     "sunnyvale-vpn",
-    "java_debug"
+    "java_debug",
+	"create_solr_core",
+	"fw_off",
+	"load_solr_core"
 ]
 default["scripts"]["trading"] = [
 	"dbcreate",
