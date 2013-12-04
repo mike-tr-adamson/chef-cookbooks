@@ -30,7 +30,13 @@ default["packages"]["apps"] = [
 	"python-vm-builder",
 	"virt-manager",
 	"apache2",
-	"thrift-compiler",
+	"libboost-dev",
+	"libboost-test-dev",
+	"libboost-program-options-dev",
+	"libevent-dev",
+	"flex",
+	"bison",
+	"libssl-dev",
 	"libssl0.9.8"
 ]
 
